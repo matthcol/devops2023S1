@@ -7,10 +7,10 @@ source /etc/network/interfaces.d/*
 auto lo
 iface lo inet loopback
 
-# pppppppppprivate netwooooooor
-allow-hotplug enp0s9
-iface enp0s9 inet dhcp
+# NAT interface
+allow-hotplug ens33
+iface ens33 inet dhcp
 
-#  bridge
-allow-hotplug enp0s8
-iface enp0s8 inet dhcp
+# Host only network interface
+allow-hotplug ens36
+iface ens36 inet dhcp
