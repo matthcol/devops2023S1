@@ -1,0 +1,19 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+#  interface nat IF_NAT_NAME
+auto IF_NAT_NAME
+allow-hotplug IF_NAT_NAME
+iface IF_NAT_NAME inet dhcp
+
+# private network IF_HOST_ONLY_NAME
+auto IF_HOST_ONLY_NAME
+allow-hotplug IF_HOST_ONLY_NAME
+iface IF_HOST_ONLY_NAME inet dhcp
+
