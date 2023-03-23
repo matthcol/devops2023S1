@@ -8,9 +8,11 @@ auto lo
 iface lo inet loopback
 
 # NAT interface
+auto ens33
 allow-hotplug ens33
 iface ens33 inet dhcp
 
-# Host only network interface
+# Host Only interface
+auto ens36
 allow-hotplug ens36
 iface ens36 inet dhcp
