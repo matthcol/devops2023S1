@@ -1,0 +1,9 @@
+/var/log/loop.log {
+  daily
+  rotate 7
+  compress
+  delaycompress
+  missingok
+  create 644 sisyphe sisyphe
+}
+
