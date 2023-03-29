@@ -42,7 +42,7 @@ foreach ($img in Get-ChildItem -Path "$src_dir" | Where-Object Extension -In $ex
             # mkdir
             New-Item -ItemType Directory $dest_img_dir | Out-Null
         }
-        $dest_img_path = "$dest_img_dir\$img_filename"
+        $dest_img_path = Join-Path "$dest_img_dir" "$img_filename"
         if (Test-Path $dest_img_path) {
             Write-Output "Skip photo [${img_filename}]: already exists in $dest_img_dir"
             continue
