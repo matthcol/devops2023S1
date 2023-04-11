@@ -1,0 +1,12 @@
+body {
+	background-color: #d1f3d1;
+}
+
+section.photo {
+	background-color: #ee7a7a;
+
+}
+
+section.photo img {
+	margin: 2px;
+}
