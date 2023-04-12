@@ -1,0 +1,29 @@
+apply plugin: 'java'
+apply plugin: 'war'
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+repositories { 
+    mavenCentral() 
+}
+
+war {
+    archiveBaseName = 'movieapp'
+    archiveVersion =  '1.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+dependencies {
+	
+	compileOnly group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '3.0.7'
+	compileOnly group: 'org.postgresql', name: 'postgresql', version: '42.4.2'
+    compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+    implementation group: 'jstl', name: 'jstl', version: '1.2'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.9.0'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: '5.9.0'
+    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version:'5.9.0'
+   
+}
