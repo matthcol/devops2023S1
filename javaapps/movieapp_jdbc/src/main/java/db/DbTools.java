@@ -86,6 +86,7 @@ public class DbTools {
 			var res = st.executeQuery(SQL_ALL_MOVIES);
 			while (res.next()) {
 				var movie = new Movie();
+				movie.setId(res.getInt("id"));
 				movie.setTitle(res.getString("title"));
 				movie.setYear(res.getShort("year"));
 				movies.add(movie);
