@@ -22,6 +22,8 @@ public class Bonjour extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("title", "Hello Everyone");
+		request.setAttribute("place", "There");
+
 		request.setAttribute("method", request.getMethod());
 		LocalDateTime dt = LocalDateTime.now();
 		request.setAttribute("clock", dt);

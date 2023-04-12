@@ -10,7 +10,7 @@ repositories {
 
 jar {
     archiveBaseName = 'bonjour'
-    archiveVersion =  '1.0'
+    archiveVersion =  '1.1'
 }
 
 dependencies {
