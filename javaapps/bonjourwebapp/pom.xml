@@ -25,6 +25,5 @@
             <version>3.3.2</version>
         </plugin>
     </plugins>
-    <finalName>${project.name}</finalName>
 </build>
 </project>
