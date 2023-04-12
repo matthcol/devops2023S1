@@ -1,0 +1,18 @@
+apply plugin: 'java'
+apply plugin: 'war'
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+repositories {
+    mavenCentral()
+}
+
+jar {
+    archiveBaseName = 'bonjour'
+    archiveVersion =  '1.0'
+}
+
+dependencies {
+    compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+}
