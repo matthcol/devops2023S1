@@ -31,7 +31,8 @@ public class DbTools {
 	private static DataSource datasource = null;
 	private static String jndiDataSourceName = null;
 	
-	private final static String SQL_ALL_MOVIES = "select * from movies";
+	private final static String SQL_ALL_MOVIES = "select * from movies " +
+			" order by year desc, title";
 	private final static String SQL_ADD_MOVIE = "insert into movies (title,year) values (?,?)";
 	
 	public static void loadParams() {
