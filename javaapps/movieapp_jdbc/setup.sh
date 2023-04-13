@@ -25,6 +25,10 @@ then
 	exit -1
 fi
 
+mkdir -p "${RESOURCES_DIR}"
+
 DEST_FILE=${RESOURCES_DIR}/${PROPERTIES_BASEFILE}
-cp ${CONF_FILE} ${DEST_FILE}
-echo "Project fixed: ${CONF_FILE} -> ${DEST_FILE}" 
+if cp ${CONF_FILE} ${DEST_FILE}
+then
+	echo "Project fixed: ${CONF_FILE} -> ${DEST_FILE}" 
+fi
