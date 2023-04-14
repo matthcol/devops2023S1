@@ -6,7 +6,7 @@ RESOURCES_DIR=src/main/resources
 function print_usage () {
 	echo "Usage: $0 conf_suffix_name"
 	echo ""
-	echo "Example: setup project with ${CONF_DIR}/${PROPERTIES_BASEFILE}_maria"
+	echo "Example: setup project with ${CONF_DIR}/${PROPERTIES_BASEFILE}-maria"
 	echo "$0 maria"
 }
 
