@@ -1,0 +1,41 @@
+Préparation de la machine en tant que root
+
+# ------------------------------------
+# gestion des disques
+vgcreate vgora /dev/sdc
+
+lvcreate -n soft -L 8G vgora
+lvcreate -n data -L 6G vgora
+lvcreate -n backup -L 6G vgora
+
+mkfs -t ext4 /dev/vgora/soft
+mkfs -t ext4 /dev/vgora/data
+mkfs -t ext4 /dev/vgora/backup
+
+# remove 5% root quota 
+tune2fs -m 0 /dev/mapper/vgora-data
+tune2fs -m 0 /dev/mapper/vgora-soft
+tune2fs -m 0 /dev/mapper/vgora-backup
+
+
+# ------------------------------------
+# table de montage: /etc/fstab
+/dev/mapper/vgora-soft          /app            ext4    defaults         0       1
+/dev/mapper/vgora-data          /oradata        ext4    defaults         0       1
+/dev/mapper/vgora-backup        /orabackup      ext4    defaults         0       1
+
+# ------------------------------------
+# user oracle et ses groupes
+groupadd dba
+groupadd oinstall
+useradd -m -r -s /usr/bin/bash -g oinstall -G dba oracle
+
+# --------------------------------------
+# desarchiver Oracle
+# en tant que root:
+mkdir -p  /app/oracle/product/19.3/dbhome1
+chown -R oracle:oinstall /app/oracle
+
+# en tant que oracle:
+cd  /app/oracle/product/19.3/dbhome1
+unzip /home/srvadmin/LINUX.X64_193000_db_home.zip
