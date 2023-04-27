@@ -8,7 +8,7 @@ repositories {
     mavenCentral()
 }
 
-jar {
+war {
     archiveBaseName = 'bonjour'
     archiveVersion =  '1.1'
 }
