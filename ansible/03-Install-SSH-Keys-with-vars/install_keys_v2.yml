@@ -1,0 +1,28 @@
+---
+- name: create user
+  hosts: all
+  tasks:
+    - name: create user
+      ansible.builtin.user:
+        name: "{{ user_installer }}"
+        shell: /usr/bin/bash
+    - name: make user sudo
+      community.general.sudoers:
+        name: allow-installer
+        user: "{{ user_installer }}"
+        commands: ALL
+
+
+- name: copy public key 
+  hosts: all
+  tasks:
+    - name: Debug SSH key file
+      debug:
+        msg: "{{ ssh_public_key }}"
+    - name: Copy Key
+      ansible.posix.authorized_key:
+        user: "{{ user_installer }}"
+        key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/' + ssh_public_key) }}"
+
+      
+

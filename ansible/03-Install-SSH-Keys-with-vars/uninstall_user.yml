@@ -1,0 +1,15 @@
+---
+- name: Remove User
+  hosts: all
+  tasks:
+    - name: unmake user sudo
+      community.general.sudoers:
+        name: allow-{{ user_installer }}
+        user: "{{ user_installer }}"
+        state: absent
+    - name: remove user
+      ansible.builtin.user:
+        name: "{{ user_installer }}"
+        state: absent
+        remove: true
+
