@@ -5,7 +5,7 @@ Créer un jeu de clé SSH de type rsa: id_rsa_ansible
 
 ## Playbooks
 ### Variables
-Les variables placées dans le fichie ***group_vars/all*** sont valables sur tout l'inventaire.
+Les variables placées dans le fichier ***group_vars/all*** sont valables sur tout l'inventaire.
 
 Ces variables pourront être redéfinies dans un lieu avec précédence plus grande (par exemple avec l'option -e).
 
