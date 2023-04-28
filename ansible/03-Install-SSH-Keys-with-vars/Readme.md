@@ -21,7 +21,7 @@ ansible-playbook -u srvadmin -k -b -K -i hosts install_keys_v2.yml
 
 ansible-playbook -u srvadmin -k -b -K -i hosts -e "user_installer=oinstall" install_keys_v2.yml
 
-### Suppresion du user
+### Suppression du user
  
 ansible-playbook -u srvadmin -k -b -K -i hosts uninstall_user.yml
 
