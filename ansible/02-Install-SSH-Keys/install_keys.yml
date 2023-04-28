@@ -1,0 +1,36 @@
+# NB: this book overwrites the whole file authorized_keys
+---
+- name: create user
+  hosts: all
+  tasks:
+    - name: create user
+      ansible.builtin.user:
+        name: installer
+        shell: /usr/bin/bash
+    - name: make user sudo
+      community.general.sudoers:
+        name: allow-installer
+        user: installer
+        commands: ALL
+
+
+- name: copy public key 
+  hosts: all
+  tasks:
+    - name: SSH Directory
+      ansible.builtin.file:
+        path: /home/installer/.ssh
+        state: directory
+        mode: 0700
+        owner: installer
+        group: installer
+    - name: Copy Key
+      ansible.builtin.copy:
+        src: ~/.ssh/id_rsa_ansible.pub
+        dest: /home/installer/.ssh/authorized_keys
+        mode: 0600
+        owner: installer
+        group: installer
+
+      
+

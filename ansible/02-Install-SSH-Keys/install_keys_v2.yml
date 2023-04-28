@@ -1,0 +1,22 @@
+---
+- name: create user
+  hosts: all
+  tasks:
+    - name: create user
+      ansible.builtin.user:
+        name: installer
+        shell: /usr/bin/bash
+    - name: make user sudo
+      community.general.sudoers:
+        name: allow-installer
+        user: installer
+        commands: ALL
+
+
+- name: copy public key 
+  hosts: all
+  tasks:
+    - name: Copy Key
+      ansible.posix.authorized_key:
+        user: installer
+        key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa_ansible.pub') }}"
