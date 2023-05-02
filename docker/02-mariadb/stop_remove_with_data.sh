@@ -1,0 +1,9 @@
+#!/bin/bash
+MARIADB_DATABASE=dbmovie
+CONTAINER_NAME=mariadb_$MARIADB_DATABASE
+DATA_VOLUME_NAME=data_mariadb_$MARIADB_DATABASE
+
+
+docker stop $CONTAINER_NAME
+docker rm -v $CONTAINER_NAME
+docker volume rm $DATA_VOLUME_NAME
