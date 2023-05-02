@@ -7,11 +7,16 @@
       ansible.builtin.user:
         name: installer
         shell: /usr/bin/bash
+    # - name: make user sudo
+    #   community.general.sudoers:
+    #     name: allow-installer
+    #     user: installer
+    #     commands: ALL
     - name: make user sudo
-      community.general.sudoers:
-        name: allow-installer
-        user: installer
-        commands: ALL
+      ansible.builtin.copy:
+        src: files/allow-installer
+        dest: /etc/sudoers.d/
+        mode: 0220
 
 
 - name: copy public key 

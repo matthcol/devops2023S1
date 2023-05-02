@@ -8,10 +8,11 @@
         name: "{{ user_installer }}"
         shell: /usr/bin/bash
     - name: make user sudo
-      community.general.sudoers:
-        name: allow-{{ user_installer }}
-        user: "{{ user_installer }}"
-        commands: ALL
+      ansible.builtin.template:
+        src: templates/sudoers-nopasswd.j2
+        dest: /etc/sudoers.d/allow-{{ user_installer }}
+        mode: 0220
+        # validate: TODO: do some validation here
 
 
 - name: copy public key 
