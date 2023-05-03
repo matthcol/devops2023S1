@@ -9,5 +9,17 @@ services:
       - 8080:8080
 
 
-  #  db:
+  db:
+    image: postgres:15.2
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: movie
+      POSTGRES_DB: dbmovie
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+      - data_pg_movie:/var/lib/postgresql/data
 
+volumes:
+  data_pg_movie:
